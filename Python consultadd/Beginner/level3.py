@@ -1,3 +1,94 @@
+#10 check for the computer availability and return the cout of customers whoe where not server beacuse of already occupied computers
+def check_availability(N, S):
+    occupied_ct = 0
+    cafe={}
+    unserved = 0
+    for customer in S:
+        if customer not in cafe:
+            if occupied_ct< N:
+                occupied_ct +=1
+                cafe[customer] = True #which say that customer have oppcioed a available computer
+            else:
+                unserved +=1
+                cafe[customer] = False
+        else:
+            if cafe[customer]== True:
+                occupied_ct -= 1
+            del cafe[customer]    
+    return unserved
+
+    
+print(check_availability(3,"GACCBDDBAGEE" ))
+#9 return rin legth of encoded sting
+inputstring ="wwwwaaadebbbbbw"
+def runLength(inputstring):
+    encodedstring = ""
+    ct = 1 #as I am staring from index 1 so, ct should be 1 by default
+    for i in range(1,len(inputstring)):
+        if inputstring[i] == inputstring[i-1]:
+            ct +=1
+        else:
+            encodedstring += inputstring[i-1]+str(ct)
+            ct =1
+    return encodedstring
+            
+print(runLength(inputstring))
+
+#8 accept the encoded and parse it 
+encoded_input = "Robert000Smith000123"
+
+def encoded(encoded_input):
+    parts = [data for data in encoded_input.split('0') if data !='']
+    return f"First name {parts[0]} | Last Name {parts[1]} | ID {parts[2]}"
+
+print(encoded(encoded_input))
+
+#7 dictionary should map the students with their
+# respective subjects. Let’s see how to do this using for loops and
+# dictionary comprehension.
+names =  ["Sam", "Alice", "Mona"]
+subjects =["Commerce", "Science", "Computer"]
+maping ={}
+for i in range(len(names)):
+    maping[names[i]]= subjects[i]
+
+print(f"Mapping of name to subject:{maping}")
+
+
+#6 Python classes which have methods and attributes and implement single inheritance, multiple inheritance,
+# and multilevel inheritance
+#single inheritance
+class Person:
+    def __init__(self, person_name):
+        self.name = person_name
+    
+    def intro(self):
+        print(f"{self.name} is a Person")
+
+class Student(Person):
+    def study(self):
+        print(f"{self.name} is a student")
+        
+class Intern:
+    def job_role(self):
+        print(f"{self.name} is an Intern")
+
+#multilevel inheritence as CPTStudent inherit from more then one class
+#multiple inheritance as well, as CPTStudent inherit from student class which inherit from Person class
+class CPTStudent(Student, Intern):
+    def summerIntern(self):
+        print(f"{self.name} is a CPT student and summer intern")
+    
+cpt = CPTStudent("Lee")
+cpt.summerIntern()
+cpt.study()
+cpt.job_role()
+
+cpt.intro()
+
+
+
+
 #5 class Time and display time -> hrs and min , diplay time only in min -> total min
 class Time():
     def __init__(self, hour=0, minute=0):
