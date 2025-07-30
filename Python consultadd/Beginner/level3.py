@@ -147,7 +147,7 @@ with open("sample.txt","r") as file:
 print(f"Lines in file: {count}")
 
 
-#opening and reading file
+#1 opening and reading file
 
 with open("sample.txt","r") as file:
     data = file.read()
